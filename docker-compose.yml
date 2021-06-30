@@ -35,8 +35,6 @@ services:
         memlock:
             soft: -1
             hard: -1
-    volumes:
-        - ./data:/usr/share/elasticsearch/data
     
   # elasticsearch browsers
 
