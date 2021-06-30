@@ -29,10 +29,14 @@ Enter at docker kafka container
 docker run --rm -it --net=host landoop/fast-data-dev:latest bash
 ```
 
+![image](screenshots/001.jpeg)
+
 Create kafka topic called test
 ```
 kafka-topics --create --topic test --partitions 3 --replication-factor 1 --zookeeper 127.0.0.1:2181
 ```
+
+![image](screenshots/002.jpeg)
 
 Access Kafka Connect UI
 ```
@@ -41,10 +45,11 @@ http://localhost:3030/kafka-topics-ui/#/
 
 Click at test topic
 
-[image]
+![image](screenshots/003.jpeg)
 
-The topic is empty yet
+The topic has not any message yet
 
+![image](screenshots/004.jpeg)
 
 2 - Start Java Project(Kafka Producer)
 
@@ -62,10 +67,14 @@ Start the app
 java -jar target\demo-springboot-kafka-connect-0.0.1-SNAPSHOT.jar
 ``` 
 
+![image](screenshots/005.jpeg)
+
 Call rest endpoint api which one is goind to send message to kafka topic
 ```
 curl -XPOST http://localhost:8080/dispatch-topic-message
 ```
+
+![image](screenshots/006.jpeg)
 
 Access Kafka Connect UI
 ```
@@ -74,9 +83,9 @@ http://localhost:3030/kafka-topics-ui/#/
 
 Click at test topic
 
-[image]
+![image](screenshots/007.jpeg)
 
-The topic received the message
+The topic received the message!
 
 ## Setting Kafka Connect(Elasticsearch Sink)
 
@@ -88,11 +97,11 @@ Access Kafka Connect UI and click at New button
 http://localhost:3030/kafka-connect-ui/
 ```
 
-[image]
+![image](screenshots/008.jpeg)
 
 At search box type 'elasticsearch' and click at Elastic Search Confluent Sink Connector
 
-[image]
+![image](screenshots/009.jpeg)
 
 Now, replace all properties settings by the follow:
 
@@ -111,7 +120,13 @@ topic.key.ignore=true
 topic.schema.ignore=true
 ```
 
+![image](screenshots/010.jpeg)
+
 Finally, click at CREATE button.
+
+The Connector called 'sink-elastic-test-distributed' was created!
+
+![image](screenshots/011.jpeg)
 
 To see Connector Logs, access Kafka Connect UI url above and click at connect-distributed.log:
 
@@ -119,7 +134,7 @@ To see Connector Logs, access Kafka Connect UI url above and click at connect-di
 http://localhost:3030/logs/
 ```
 
-[image]
+![image](screenshots/012.jpeg)
 
 ## Viewing data at elasticsearch
 
@@ -131,16 +146,13 @@ Access Dejavu
 ```
 http://localhost:1358/
 ``` 
-
-[image]
-
 Type elasticsearch url with port and index which one was created to persist kafka message and click at 'Connect' button
 
-[image]
+![image](screenshots/013.jpeg)
 
-Follow is possible to see the message persisted
+Follow is possible to see the message persisted at elasticsearch index
 
-[image]
+![image](screenshots/014.jpeg)
 
 ### Kibana
 
@@ -161,4 +173,5 @@ GET test/_search
 }
 ```
 
-[image]
+![image](screenshots/015.jpeg)
+
