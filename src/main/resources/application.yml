@@ -7,3 +7,5 @@ spring:
   kafka:
     producer:
       bootstrap-servers: localhost:9092
+    topics:
+      topic-test: test

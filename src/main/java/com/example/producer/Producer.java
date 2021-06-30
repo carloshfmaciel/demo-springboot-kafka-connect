@@ -3,6 +3,7 @@ package com.example.producer;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Component;
 
@@ -14,7 +15,8 @@ public class Producer {
 	@Autowired
 	private KafkaTemplate<String, Message> kafkaTemplate;
 
-	private String topic = "xpto";
+	@Value("${spring.kafka.topics.topic-test}")
+	private String topic;
 
 	public void sendMessage(Message message) {
 		final String key = UUID.randomUUID().toString();
