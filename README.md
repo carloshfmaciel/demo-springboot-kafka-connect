@@ -59,7 +59,7 @@ mvn clean install
 Start the app
 
 ```
-java -jar 
+java -jar target\demo-springboot-kafka-connect-0.0.1-SNAPSHOT.jar
 ``` 
 
 Call rest endpoint api which one is goind to send message to kafka topic
