@@ -8,7 +8,7 @@ Elasticsearch Sink(Kafka Connector) will be consuming the message and it will pe
 - Docker/Docker Compose
 - Lenses Box(Apache Kafka docker image for developers)
   - Kafka Broker
-  - Kafka Connect(ElasticsearchSinkConnector[https://docs.confluent.io/kafka-connect-elasticsearch/current/index.html])
+  - [Kafka Connect(ElasticsearchSinkConnector)](https://docs.confluent.io/kafka-connect-elasticsearch/current/index.html)
 - Elasticsearch OSS 7.10.2
 - Kibana OSS 7.10.2
 - Dejavu 3.4.7
@@ -81,19 +81,19 @@ services:
         - elasticsearch
 ```
 
-## Create Kafka Topic
+## Creating Kafka Topic
 
 Enter at docker kafka container
 ```
 docker run --rm -it --net=host landoop/fast-data-dev:latest bash
 ```
 
-Creating kafka topic called test
+Create kafka topic called test
 ```
 kafka-topics --create --topic test --partitions 3 --replication-factor 1 --zookeeper 127.0.0.1:2181
 ```
 
-Acess Kafka Connect UI
+Access Kafka Connect UI
 ```
 http://localhost:3030/kafka-topics-ui/#/
 ```
